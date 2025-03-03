@@ -53,7 +53,7 @@ To address the issue of determinism, several methods have been designed to incor
 </p>
 
 
-# Impact of Initialization on Global Optimization
+# Impact on Global Optimization
 
 Initialization is an important step for any model-based or metaheuristic global optimization algorithm. In this application, one would like to sample high-dimensional space as uniformly as possible to provide the model/algorithm a good starting point for further optimization iterations. As a consequence, some of the most popular black-box optimization packages and services including Google's Vizier, Optuna, SMAC3, and others, regularly employ quasi-random sequences for their initial random sampling.
 
