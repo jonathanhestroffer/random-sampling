@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
         for dim in dimensions:
             
-            print(f"Dimension: {dim}")
+            print(f"Dimensions: {dim}")
 
             def objective(trial: optuna.Trial):
                 """Suggest and evaluate new point in sample space.
@@ -102,14 +102,14 @@ if __name__ == "__main__":
 
                 # record best MC value
                 dataDict["Sampling Method"].append("MC")
-                dataDict["Dimension"].append(dim)
+                dataDict["Dimensions"].append(dim)
                 dataDict["Best Value"].append(mc_study.best_value)
 
                 # record best RQMC value
                 dataDict["Sampling Method"].append("RQMC")
-                dataDict["Dimension"].append(dim)
+                dataDict["Dimensions"].append(dim)
                 dataDict["Best Value"].append(rqmc_study.best_value)
             
         # save as DataFrame
         df = pd.DataFrame.from_dict(dataDict)
-        pd.to_pickle(df, f'./data/{direction}_df.pkl')
+        pd.to_pickle(df, f"./data/{direction}_df.pkl")

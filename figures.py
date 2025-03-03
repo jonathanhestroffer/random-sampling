@@ -90,7 +90,7 @@ if __name__ == "__main__":
     Z = Rastrigin(x).reshape(X.shape)
 
     im = ax.pcolormesh(X, Y, Z, cmap="jet")
-    ax.contour(X, Y, Z, colors='white', alpha=0.5)
+    ax.contour(X, Y, Z, colors="white", alpha=0.5)
 
     ax.set_xlabel(r"$x_{1}$")
     ax.set_ylabel(r"$x_{2}$", rotation=0, labelpad=20)
@@ -100,24 +100,24 @@ if __name__ == "__main__":
     cbar = plt.colorbar(im, cax=cax)
 
     fig.tight_layout(pad=0.5)
-    plt.savefig('./figures/rastrigin.png', dpi=300, bbox_inches='tight')
+    plt.savefig("./figures/rastrigin.png", dpi=300, bbox_inches="tight")
 
     
     # Load saved data
-    df_max = pd.read_pickle('./data/maximize_df.pkl')
-    df_min = pd.read_pickle('./data/minimize_df.pkl')
+    df_max = pd.read_pickle("./data/maximize_df.pkl")
+    df_min = pd.read_pickle("./data/minimize_df.pkl")
 
     # Normalize max values
     # max f(x) = dim * 40.35329019
-    df_max['Best Value'] = df_max.apply(lambda x: x['Best Value'] / (x['Dimension']*40.35329019), axis=1)
+    df_max["Best Value"] = df_max.apply(lambda x: x["Best Value"] / (x["Dimensions"]*40.35329019), axis=1)
 
     # Optimization figure
     fig, axs  = plt.subplots(figsize=(18,9),ncols=2)
-    sns.boxplot(data=df_min, x='Dimension', y='Best Value', hue='Sampling Method', ax=axs[0])
-    sns.boxplot(data=df_max, x='Dimension', y='Best Value', hue='Sampling Method', ax=axs[1], legend=False)
+    sns.boxplot(data=df_min, x="Dimensions", y="Best Value", hue="Sampling Method", ax=axs[0])
+    sns.boxplot(data=df_max, x="Dimensions", y="Best Value", hue="Sampling Method", ax=axs[1], legend=False)
     axs[0].set_title(r"Minimize $f(\mathbf{x}$)")
     axs[0].set_ylabel("Best Value")
     axs[1].set_title(r"Maximize $f(\mathbf{x}$)")
     axs[1].set_ylabel("Normalized Best Value")
     fig.tight_layout(pad=1.5)
-    fig.savefig('./figures/optimization.png', dpi=300, bbox_inches='tight')
+    fig.savefig("./figures/optimization.png", dpi=300, bbox_inches="tight")
