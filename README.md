@@ -71,6 +71,7 @@ For this experiment, I randomly sampled valid test points $x\in\mathbb{R}^n$ for
 
 Note: 
 * A low number of optimization trials were deliberately chosen to emphasize the impact of initialization. Further optimization would shift the focus toward the performance of Optuna’s TPE sampler, which is not the primary objective of this analysis.
+* Number of samples, N, increased with dimension to maintain a roughly equivalent sample density within each hypervolume. $\text{N}=2^{3+n}$, where $n$ represents the number of dimensions.
 * Each boxplot below represents 100 initialization runs.
 
 ### Results
